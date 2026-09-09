@@ -1,16 +1,47 @@
-# React + Vite
+# Pathfolio — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the frontend for Pathfolio, a job application tracker I built to stop losing track of where I'd applied. It's a React app with a Kanban-style board, live updates via Socket.io, and JWT auth.
 
-Currently, two official plugins are available:
+Backend repo (Express + MongoDB): https://github.com/Kanishka211/Pathfolio-backend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live app:** https://pathfolio-frontend.vercel.app
 
-## React Compiler
+## What's in here
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Login / Register pages
+- A dashboard with a Kanban board (Applied → OA → Interview → Offer / Rejected)
+- Add / edit / delete applications from the UI
+- Applications update in real time — if you have two tabs open and change something in one, the other updates without a refresh
+- Applications that haven't been touched in 7+ days get flagged so you remember to follow up
 
-## Expanding the Oxlint configuration
+## Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+React (Vite) · React Router · Axios · Socket.io-client
+
+## Running it locally
+
+Clone the repo, then:
+
+```bash
+npm install
+```
+
+You'll need the backend running too (see the backend repo for that). Once it's up, create a `.env` file here with:
+
+```
+VITE_API_URL=http://localhost:5000
+```
+
+Then:
+
+```bash
+npm run dev
+```
+
+Should be running on `localhost:5173`.
+
+## Notes
+
+The backend's on Render's free tier so it spins down when it's not used — if you're checking out the live demo and it feels slow to load the first time, that's why. Give it 30-ish seconds and it'll wake up.
+
+Still on my list: better styling (functionality came first), pagination if the list ever gets long, and cleaning up a couple of deprecated Mongoose warnings on the backend.
